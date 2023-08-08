@@ -59,7 +59,7 @@ export class CatsController {
 @Post()
 @Bind(Body())
 create(cat){
-    return `cadastro do gato ${cat}`
+    return `cadastro do gato ${JSON.stringify(cat)}`
 }    
 
 }

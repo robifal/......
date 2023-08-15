@@ -9,4 +9,9 @@ export class CatsService {
     findall(){
         return this.cats;
     }
+
+    create(cat) {
+        this.cats.push(cat);
+        
+    }
 }

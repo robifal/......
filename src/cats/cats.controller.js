@@ -1,4 +1,4 @@
-import { Controller, Get, Bind, Param, Res, HttpStatus, Delete, Post, Body, Put, Dependencies} from '@nestjs/common';
+import { Controller, Get, Bind, Param, Res, HttpStatus, Delete, Post, ParseIntPipe, Body, Put, Dependencies} from '@nestjs/common';
 import { CatsService } from './cats.service';
 
 const GATOS = [
@@ -36,9 +36,9 @@ export class CatsController {
     }
 
     @Get(':id')
-    @Bind(Param('id'), Res())
+    @Bind(Param('id', new ParseIntPipe()), Res())
     findOne(id, res){
-        const gatoEncontrado = this.catsService.findById(params.id) 
+        const gatoEncontrado = this.catsService.findById(id) 
         if(gatoEncontrado){
             res.status(HttpStatus.OK).json(gatoEncontrado)
             // return gatoEncontrado
@@ -50,8 +50,8 @@ export class CatsController {
        
     }
 
-    @Delete(':id')
-    @Bind(Param('id'), Res())
+    @Delete(':id')  
+    @Bind(Param('id', new ParseIntPipe), Res())
     remove(id, res){
         const indexGatoEncontrado = this.catsService.findIndex(id)
         if(indexGatoEncontrado >= 0){

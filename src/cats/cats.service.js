@@ -27,7 +27,7 @@ export class CatsService {
         this.cats.splice(index, 1);
     }
 
-    updateCatsById(id){
-        this.cats.push
-    }
+    update(index, cat){
+        this.cats.splice(index, 1, cat)
+    }   
 }

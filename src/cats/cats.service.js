@@ -6,7 +6,7 @@ export class CatsService {
         this.cats = [];
     }
 
-    findall(){
+    findAll(){
         return this.cats;
     }
 
